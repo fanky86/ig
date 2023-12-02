@@ -1456,9 +1456,9 @@ if __name__=='__main__':
 	except:pass
 	try:os.system('touch .prox.txt')
 	except:pass
-	try:os.system('mkdir result/success')
+	try:os.mkdir('result/success')
 	except:pass
-	try:os.system('mkdir result/checkpoint')
+	try:os.mkdir('result/checkpoint')
 	except:pass
 	try:
 		ko = ses.get('https://pastebin.com/raw/zDsBKSkW').json()
