@@ -472,7 +472,7 @@ class instagram:
 		try:
 			ses=requests.Session()
 			lisen=open('.lisen.txt','r').read().splitlines()
-			met = ses.get('https://app.cryptolens.io/api/key/Activate?token=WyIyODk1MzkwMyIsImVUdmdBNEZpL0RyVEFReFFwVTBhMzhaelBIaHZJbHhWQkZSSUdHRVoiXQ==&ProductId=17514&Key='+lisen).json()
+			met = ses.get('https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key='+lisen).json()
 			men = met['licenseKey']
 			key = men['key'][0:16]
 			tahun = men['expires'][0:4]
@@ -1341,7 +1341,7 @@ def lisensi():
  except:
   tlisensi()
  ses=requests.Session()
- res=ses.get('https://app.cryptolens.io/api/key/Activate?token=WyIyODk1MzkwMyIsImVUdmdBNEZpL0RyVEFReFFwVTBhMzhaelBIaHZJbHhWQkZSSUdHRVoiXQ==&ProductId=17514&Key='+lisensikuni[0]).json()
+ res=ses.get('https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key='+lisensikuni[0]).json()
  status=res['licenseKey']['key']
  if status ==cek:
   li()
@@ -1467,4 +1467,4 @@ if __name__=='__main__':
 		HARIS.update(ki)
 	except Exception as e:
 		prints(e)
-	login_kamu()
+	lisensi()
