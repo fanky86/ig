@@ -474,7 +474,7 @@ class instagram:
 		try:
 			ses=requests.Session()
 			lisen=open('.lisen.txt','r').read().splitlines()
-			met = ses.get('https://app.cryptolens.io/api/key/Activate?token=WyIxMDExNzk0NzYiLCI5T3hCL0N4bkVWbXp1VWttS212VERRUUJFVUlXRGhiZ05lZWFORngvIl0=&ProductId=28398&Key='+lisen).json()
+			met = ses.get('https://app.cryptolens.io/api/key/Activate?token=WyIxMDExNzk3MzIiLCJFMFJ4dklxaUZRQlNIa0grSzZWNjBvcnBmOHdtNk02TjBEUmJDTlQzIl0=&ProductId=28468&Key='+lisen).json()
 			men = met['licenseKey']
 			key = men['key'][0:16]
 			tahun = men['expires'][0:4]
@@ -1336,47 +1336,15 @@ def tlisensi():
     loadinglisen()
     open('.lisen.txt','w').write(lisen)
     lisensi()   
-
-def lisensi():
-    try:
-        cek = open('.lisen.txt').read()
-        lisensikuni.append(cek)
-    except:
-        tlisensi()
-
-    ses = requests.Session()
-    try:
-        res = ses.get(
-            'https://app.cryptolens.io/api/key/Activate?token=WyIxMDExNzk0NzYiLCI5T3hCL0N4bkVWbXp1VWttS212VERRUUJFVUlXRGhiZ05lZWFORngvIl0=&ProductId=28398&Key=' + lisensikuni[0]
-        ).json()
-    except Exception as e:
-        print("Error saat mengakses API:", e)
-        return
-
-    if 'licenseKey' in res:
-        status = res['licenseKey']['key']
-        if status == cek:
-            li()
-            cetak(nel('\t[green] SELAMAT LISENSI ANDA VALID[/green]'))
-            time.sleep(2)
-            lisensiku.append("sukses")
-            login_kamu()
-        else:
-            os.system('rm .lisen.txt')
-            tlisensi()
-    else:
-        print("Key 'licenseKey' tidak ditemukan dalam respons:", res)
-        os.system('rm .lisen.txt')
-        tlisensi()
 	    
-def lisensiii():
+def lisensi():
  try:
   cek=open('.lisen.txt').read()
   lisensikuni.append(cek)
  except:
   tlisensi()
  ses=requests.Session()
- res=ses.get('https://app.cryptolens.io/api/key/Activate?token=WyIxMDExNzk0NzYiLCI5T3hCL0N4bkVWbXp1VWttS212VERRUUJFVUlXRGhiZ05lZWFORngvIl0=&ProductId=28398&Key='+lisensikuni[0]).json()
+ res=ses.get('https://app.cryptolens.io/api/key/Activate?token=WyIxMDExNzk3MzIiLCJFMFJ4dklxaUZRQlNIa0grSzZWNjBvcnBmOHdtNk02TjBEUmJDTlQzIl0=&ProductId=28468&Key='+lisensikuni[0]).json()
  status=res['licenseKey']['key']
  if status ==cek:
   li()
