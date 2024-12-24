@@ -9,9 +9,19 @@ from bs4 import BeautifulSoup as bsp
 from concurrent.futures import ThreadPoolExecutor
 from rich import print as Print
 from rich.tree import Tree
+from rich.panel import Panel
+from rich.panel import Panel as panel
 from rich.panel import Panel as Nel
 from rich.console import Console
-
+console= Console()
+# ------------------[  MODULE  ]-------------------#
+M2 = "[#FF0000]"  # MERAH
+H2 = "[#00FF00]"  # HIJAU
+K2 = "[#FFFF00]"  # KUNING
+B2 = "[#00C8FF]"  # BIRU
+P2 = "[#FFFFFF]"  # PUTIH
+U2 = "[#AF00FF]"  # UNGU
+O2 = "[#FF8F00]"  # ORANGE
 P = "\033[97m"
 I = "\033[30m"
 A = "\033[90m"
@@ -40,7 +50,7 @@ class MAIN:
 
    def __init__(self):
        super(MAIN).__init__()
-       self.head = {'user-agent': 'Mozilla/5.0 (Linux; Android 8.0.0; F5321 Build/34.4.A.2.32; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/65.0.3325.109 Mobile Safari/537.36 Instagram 38.0.0.13.95 Android (26/8.0.0; 320dpi; 720x1184; Sony; F5321; F5321; qcom; ru_RU; 99640905)',}
+       self.head = {'user-agent': 'Mozilla/5.0 (Linux; Android 8.0.0; F5321 Build/34.4.A.2.32; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/65.0.3325.109 Mobile Safari/537.36 Instagram 38.0.0.13.95 Android (26/8.0.0; 320dpi; 720x1184; Sony; F5321; F5321; qcom; ru_RU; 99640905)'}
 
    def MyRich(self, Text, chos=None, title=None):
        self.cat = 'color(8)'
@@ -61,17 +71,15 @@ class MAIN:
        else:
           Console(width=62).print(Nel(Text, \
           style=self.cat))
-
    def Me(self):
-       self.MyRich('''[blue]
-  ██▓  ▄████  ▄████▄   ██▀███   ▄▄▄       ▄████▄   ██ ▄█▀
-  ▓██▒ ██▒ ▀█▒▒██▀ ▀█  ▓██ ▒ ██▒▒████▄    ▒██▀ ▀█   ██▄█▒ 
-  ▒██▒▒██░▄▄▄░▒▓█    ▄ ▓██ ░▄█ ▒▒██  ▀█▄  ▒▓█    ▄ ▓███▄░ 
-  ░██░░▓█  ██▓▒▓▓▄ ▄██▒▒██▀▀█▄  ░██▄▄▄▄██ ▒▓▓▄ ▄██▒▓██ █▄ 
-  ░██░░▒▓███▀▒▒ ▓███▀ ░░██▓ ▒██▒ ▓█   ▓██▒▒ ▓███▀ ░▒██▒ █▄
-  ░▓   ░▒   ▒ ░ ░▒ ▒  ░░ ▒▓ ░▒▓░ ▒▒   ▓▒█░░ ░▒ ▒  ░▒ ▒▒ ▓▒
-  ▒ ░  ░   ░   ░  ▒     ░▒ ░ ▒░  ▒   ▒▒ ░  ░  ▒   ░ ░▒ ▒░
-  ▒ ░░ ░   ░ ░          ░░   ░   ░   ▒   ░        ░ ░░ ░ ''')
+       self.MyRich('''
+  [bold red]███████████████████████    
+[bold red]███████████████████████ [bold yellow]Github : [bold green]fanky86
+[bold red]███████████████████████ [bold yellow]Wa     : [bold green]+62895359611122
+[bold white]███████████████████████          
+[bold white]███████████████████████          
+[bold white]███████████████████████ 
+[bold white]''')
 
    def find_res(self, meki=[]):
        try:
@@ -83,7 +91,7 @@ class MAIN:
                else:
                     self.dihi +=1
                     print(' %s. %s'%(self.dihi,self.su))
-           self.name = input('\n Masukan nama file : ')
+           self.name = Console().input(f"\n {H2}• {P2}Masukan Nama File : ")
        except Exception as e:exit(e)
        for a in open(f'data/{self.name}','r').read().splitlines():
            xyz = re.findall('ds_user_id=(.*)',str(a))
@@ -151,10 +159,10 @@ class MAIN:
  05. Save Hasil Ke SDcard    10. Ganti Akun Tumbal
  11. Cari Akun Verif Email   12. Crack Akun Facebook''',True)
        self.chs(self.aset)
-
+       
    def chs(self, assets):
        while True:
-         x = Console(style=Tema[0]).input(f'   └──> ')
+         x = Console().input(f" {H2}• {P2}————»» ")
          if x in   ['01','1']:self.dumps(assets, True)
          elif x in ['02','2']:self.dumps(assets, False)
          elif x in ['03','3']:self.Ulang()
