@@ -1332,7 +1332,7 @@ def tlisensi():
      print(f'{M}[!] JANGAN KOSONG{N}');sleep(1)
      tlisensi()
     if lisen in ['buy','Buy']:
-     os.system('xdg-open https://wa.me/62895359611122?text=Bang+beli+lisensi+IG+nya+dong');exit()
+     os.system('xdg-open https://wa.me/62895359611122?text=Bang+beli+lisensi+IG+nya+dong')
     loadinglisen()
     open('.lisen.txt','w').write(lisen)
     lisensi()   
