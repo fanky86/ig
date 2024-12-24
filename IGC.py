@@ -66,6 +66,8 @@ try:
 	os.mkdir('result')
 except:
 	pass
+
+
 Z2 = "[#000000]" # HITAM
 M2 = "[#FF0000]" # MERAH
 H2 = "[#00FF00]" # HIJAU
@@ -472,7 +474,7 @@ class instagram:
 		try:
 			ses=requests.Session()
 			lisen=open('.lisen.txt','r').read().splitlines()
-			met = ses.get('https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key='+lisen).json()
+			met = ses.get('https://app.cryptolens.io/api/key/Activate?token=WyIxMDExNzk0NzYiLCI5T3hCL0N4bkVWbXp1VWttS212VERRUUJFVUlXRGhiZ05lZWFORngvIl0=&ProductId=28398&Key='+lisen).json()
 			men = met['licenseKey']
 			key = men['key'][0:16]
 			tahun = men['expires'][0:4]
@@ -1330,7 +1332,7 @@ def tlisensi():
      print(f'{M}[!] JANGAN KOSONG{N}');sleep(1)
      tlisensi()
     if lisen in ['buy','Buy']:
-     os.system('xdg-open https://wa.me/6283114591358?text=Bang+beli+lisensi+IG+nya+dong');exit()
+     os.system('xdg-open https://wa.me/62895359611122?text=Bang+beli+lisensi+IG+nya+dong');exit()
     loadinglisen()
     open('.lisen.txt','w').write(lisen)
     lisensi()   
@@ -1341,7 +1343,7 @@ def lisensi():
  except:
   tlisensi()
  ses=requests.Session()
- res=ses.get('https://app.cryptolens.io/api/key/Activate?token=WyI2NjMxOTcyOCIsIlhVUE9xTFIvTTNQc0hSUm4rUDhSSitjUjhKd1JSQnpXZDVHUklxWEkiXQ==&ProductId=22574&Key='+lisensikuni[0]).json()
+ res=ses.get('https://app.cryptolens.io/api/key/Activate?token=WyIxMDExNzk0NzYiLCI5T3hCL0N4bkVWbXp1VWttS212VERRUUJFVUlXRGhiZ05lZWFORngvIl0=&ProductId=28398&Key='+lisensikuni[0]).json()
  status=res['licenseKey']['key']
  if status ==cek:
   li()
