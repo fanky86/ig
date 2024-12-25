@@ -1470,4 +1470,4 @@ if __name__=='__main__':
 		HARIS.update(ki)
 	except Exception as e:
 		prints(e)
-	tlisensi()
+	lisensi()
