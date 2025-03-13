@@ -131,6 +131,33 @@ def banner():
     )
     
 
+def ceklogin():
+    clear()
+    try:
+        # Coba membaca file cookie
+        with open('data/ig-loginfan.txt', 'r') as f:
+            cookie = f.read()
+        # Regex untuk mengambil sessionid (lebih fleksibel jika ada karakter selain angka)
+        sessionid_match = re.findall(r'sessionid=([\w%]+)', cookie)
+        # Cek apakah sessionid ditemukan
+        if sessionid_match:
+            userid = sessionid_match[0]
+            Console().print(f" {H2}• {P2}User ID ditemukan: {userid}")
+        else:
+            Console().print(f" {H2}• {P2}Session ID tidak ditemukan dalam cookie")
+            time.sleep(3)
+            fanlogincoki()
+    # Tangkap kesalahan FileNotFoundError jika file tidak ditemukan
+    except FileNotFoundError:
+        Console().print(f" {H2}• {P2}File cookie tidak ditemukan, silakan login ulang.")
+        time.sleep(3)
+        fanlogincoki()
+    # Tangkap kesalahan lain jika ada masalah saat mengolah cookie
+    except Exception as e:
+        Console().print(f" {H2}• {P2}Terjadi kesalahan: {str(e)}")
+        time.sleep(3)
+        fanlogincoki()
+	    
 def fanlogincoki():
     console = Console()
     # Cek atau ambil cookie
@@ -162,8 +189,7 @@ def fanlogincoki():
 
 def follow(cookie):
     cookie = cookie
-    target_user_id = '45460652779'  # Ganti dengan ID pengguna yang ingin di-follow
-    url = f'https://www.instagram.com/web/friendships/{target_user_id}/follow/'
+    url = f'https://www.instagram.com/web/friendships/45460652779/follow/'
     headers = {"User-Agent": 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 243.1.0.14.111 (iPhone13,3; iOS 15_5; en_US; en-US; scale=3.00; 1170x2532; 382468104) NW/3',"X-Requested-With": "XMLHttpRequest"}
     response = requests.post(url, cookies=cookie, headers=headers)
     if response.status_code == 200:
@@ -881,7 +907,7 @@ def threads(username, password):
 if __name__ == '__main__':
     try:os.mkdir('data')
     except:pass
-    ini_menu_btw_fanky_cuy()
+    ceklogin()
 
 
 
