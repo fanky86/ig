@@ -160,7 +160,7 @@ def fanlogincoki():
     console = Console()
     try:
         cookie = open('data/ig-loginfan.txt', 'r').read()
-    else:
+    except:
         clear()
         banner()
         console.print(Panel("Masukan Cookie Akun Instagram", width=60, style="bold green"))
