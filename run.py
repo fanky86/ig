@@ -141,6 +141,7 @@ def ceklogin():
         if sessionid_match:
             userid = sessionid_match[0]
             Console().print(f" {H2}• {P2}User ID ditemukan: {userid}")
+            clear()
             ini_menu_btw_fanky_cuy()
         else:
             Console().print(f" {H2}• {P2}Session ID tidak ditemukan dalam cookie")
@@ -895,9 +896,11 @@ def threads(username, password):
 
 
 if __name__ == '__main__':
-    try:os.mkdir('data')
-    except:pass
-    ceklogin()
+	try:os.mkdir('data')
+	except:pass
+	try:os.system("git pull")
+	except:pass
+	ceklogin()
 
 
 
