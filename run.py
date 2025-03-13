@@ -177,7 +177,7 @@ def ini_menu_btw_fanky_cuy():
     try:
         cookie = open('data/ig-loginfan.txt', 'r').read()
         userid = re.findall(r'sessionid=(\d+)', cookie)[0]
-    except(FileNotFoundError, IndexError,KeyError):
+    except KeyError:
         Console().print(f" {H2}• {P2}Cookie anda kadaluwarsa silahkan Login Ulang")
         time.sleep(3)
         fanlogincoki()
