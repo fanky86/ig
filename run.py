@@ -148,7 +148,7 @@ def ceklogin():
             fanlogincoki()
     # Tangkap kesalahan FileNotFoundError jika file tidak ditemukan
     except FileNotFoundError:
-        Console().print(f" {H2}• {P2}File cookie tidak ditemukan, silakan login ulang.")
+        Console().print(f" {H2}• {P2}cookie tidak ditemukan/kadaluwarsa, silakan login ulang.")
         time.sleep(3)
         fanlogincoki()
     # Tangkap kesalahan lain jika ada masalah saat mengolah cookie
@@ -167,7 +167,7 @@ def fanlogincoki():
         HEADERS.update({'cookie': cookie,'x-csrftoken': re.search('csrftoken=(.*?);',cookie).group(1),'user-agent': 'Mozilla/5.0 (Linux; U; Android 4.3; ru-ru; D2105 Build/20.0.B.0.74) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 Instagram 37.0.0.21.97 Android (18/4.3; 240dpi; 480x744; Sony; D2105; D2105; qcom; ru_RU; 98288237)'})
         curl = httpx.get(userinfo.format(**{'id': re.findall(r'ds_user_id=(\d+)', str(cookie))[0]}), headers=HEADERS)
         info = json.loads(curl.text)['user']['full_name']
-        follow(cookie)
+        # follow(cookie)
         with open('data/ig-loginfan.txt', mode='w', encoding='utf-8') as wr:
            wr.write(f'{cookie}')
         wr.close()
