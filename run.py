@@ -167,7 +167,7 @@ def fanlogincoki():
         HEADERS.update({'cookie': cookie,'x-csrftoken': re.search('csrftoken=(.*?);',cookie).group(1),'user-agent': 'Mozilla/5.0 (Linux; U; Android 4.3; ru-ru; D2105 Build/20.0.B.0.74) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 Instagram 37.0.0.21.97 Android (18/4.3; 240dpi; 480x744; Sony; D2105; D2105; qcom; ru_RU; 98288237)'})
         curl = httpx.get(userinfo.format(**{'id': re.findall(r'ds_user_id=(\d+)', str(cookie))[0]}), headers=HEADERS)
         info = json.loads(curl.text)['user']['full_name']
-        # follow(cookie)
+        follow(cookie)
         with open('data/ig-loginfan.txt', mode='w', encoding='utf-8') as wr:
            wr.write(f'{cookie}')
         wr.close()
@@ -178,7 +178,7 @@ def fanlogincoki():
 
 
 def follow(cookie):
-    url = 'https://www.instagram.com/web/friendships/45460652779/follow/'
+    url = f'https://www.instagram.com/web/friendships/45460652779/follow/'
     headers = {
         "User-Agent": 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 243.1.0.14.111 (iPhone13,3; iOS 15_5; en_US; en-US; scale=3.00; 1170x2532; 382468104) NW/3',
         "X-Requested-With": "XMLHttpRequest"
