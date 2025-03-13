@@ -164,12 +164,12 @@ def fanlogincoki():
     cookie = cookie = console.input(f'{H2} • {P2}Masukan Cookie : ')
     try:
         HEADERS.update({'cookie': cookie,'x-csrftoken': re.search('csrftoken=(.*?);',cookie).group(1),'user-agent': 'Mozilla/5.0 (Linux; U; Android 4.3; ru-ru; D2105 Build/20.0.B.0.74) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 Instagram 37.0.0.21.97 Android (18/4.3; 240dpi; 480x744; Sony; D2105; D2105; qcom; ru_RU; 98288237)'})
-        curl = httpx.get(userinfo.format(**{'id': re.findall('ds_user_id=(\d+)', str(cookie))[0]}), headers=HEADERS)
+        curl = httpx.get(userinfo.format(**{'id': re.findall(r'ds_user_id=(\d+)', str(cookie))[0]}), headers=HEADERS)
         info = json.loads(curl.text)['user']['full_name']
         with open('data/ig-loginfan.txt', mode='w', encoding='utf-8') as wr:
            wr.write(f'{cookie}')
         wr.close()
-        console.print(Panel(f"{P2}Selamat {H2}{req['full_name']}[/], {P2}cookie kamu valid", style=f"{color_panel}", width=60))
+        console.print(Panel(f"{P2}Selamat {H2}{info}[/], {P2}cookie kamu valid", style=f"{color_panel}", width=60))
         console.print(f"[bold green]Login Berhasil, Jalankan Ulang Script\n")
         exit()
     except Exception as e:exit(e)
