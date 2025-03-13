@@ -141,7 +141,6 @@ def ceklogin():
         if sessionid_match:
             userid = sessionid_match[0]
             Console().print(f" {H2}• {P2}User ID ditemukan: {userid}")
-            clear()
             ini_menu_btw_fanky_cuy()
         else:
             Console().print(f" {H2}• {P2}Session ID tidak ditemukan dalam cookie")
@@ -200,14 +199,14 @@ def ini_menu_btw_fanky_cuy():
         # Cek apakah sessionid ditemukan
         if sessionid_match:
             userid = sessionid_match[0]
-            Console().print(f" {H2}• {P2}User ID ditemukan: {userid}")
+            # Console().print(f" {H2}• {P2}User ID ditemukan: {userid}")
         else:
             Console().print(f" {H2}• {P2}Session ID tidak ditemukan dalam cookie")
             time.sleep(3)
             fanlogincoki()
     # Tangkap kesalahan FileNotFoundError jika file tidak ditemukan
     except FileNotFoundError:
-        Console().print(f" {H2}• {P2}File cookie tidak ditemukan, silakan login ulang.")
+        Console().print(f" {H2}• {P2}cookie tidak ditemukan/kadaluwarsa, silakan login ulang.")
         time.sleep(3)
         fanlogincoki()
     # Tangkap kesalahan lain jika ada masalah saat mengolah cookie
