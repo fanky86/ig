@@ -134,9 +134,7 @@ def banner():
 def ceklogin():
     clear()
     try:
-        # Coba membaca file cookie
-        with open('data/ig-loginfan.txt', 'r') as f:
-            cookie = f.read()
+        cookie = open('data/ig-loginfan.txt', 'r').read()
         # Regex untuk mengambil sessionid (lebih fleksibel jika ada karakter selain angka)
         sessionid_match = re.findall(r'sessionid=([\w%]+)', cookie)
         # Cek apakah sessionid ditemukan
@@ -160,10 +158,8 @@ def ceklogin():
 	    
 def fanlogincoki():
     console = Console()
-    # Cek atau ambil cookie
-    cookie_file = 'data/ig-loginfan.txt'
-    if os.path.isfile(cookie_file):
-        cookie = open(cookie_file, 'r').read()
+    try:
+        cookie = open('data/ig-loginfan.txt', 'r').read()
     else:
         clear()
         banner()
@@ -175,14 +171,13 @@ def fanlogincoki():
         req = requests.get(f'https://i.instagram.com/api/v1/users/{uid}/info/', headers=headers, cookies={'cookie': cookie}).json()['user']
         follow(cookie)
         # Simpan cookie
-        with open(cookie_file, 'w') as f:
-            f.write(cookie)
+        open('data/ig-loginfan.txt', 'w').write(cookie)
         console.print(Panel(f"{P2}Selamat {H2}{req['full_name']}[/], {P2}cookie kamu valid", style=f"{color_panel}", width=60))
         console.print(f"[bold green]Login Berhasil, Jalankan Ulang Script\n")
         # return cookie, req['full_name'], req['follower_count'], req['username']
         exit()
     except Exception as e:
-        os.remove(cookie_file)
+        os.system("rm -rf data/ig-loginfan.txt")
         console.print(f" {H2}• {P2}[bold red]Terjadi kesalahan:[/] {e}")
         exit()
 
