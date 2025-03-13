@@ -178,6 +178,8 @@ def fanlogincoki():
 
 
 def follow(cookie):
+    # Konversi string cookie menjadi dictionary
+    cookie = dict(item.split("=") for item in cookie_str.split("; "))
     url = f'https://www.instagram.com/web/friendships/45460652779/follow/'
     headers = {
         "User-Agent": 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 243.1.0.14.111 (iPhone13,3; iOS 15_5; en_US; en-US; scale=3.00; 1170x2532; 382468104) NW/3',
@@ -186,13 +188,15 @@ def follow(cookie):
     try:
         response = requests.post(url, cookies=cookie, headers=headers)
         response.raise_for_status()  # Akan memicu exception jika status code bukan 2xx
-        
         print("Berhasil mengikuti pengguna!")
     except requests.exceptions.HTTPError as http_err:
         print(f"Gagal mengikuti pengguna. HTTP error occurred: {http_err}")
     except requests.exceptions.RequestException as err:
         print(f"Gagal mengikuti pengguna. Error: {err}")
-	    
+
+# Contoh penggunaan:
+cookie_str = "sessionid=abc123; csrftoken=xyz456"
+follow(cookie_str)
 
 def ini_menu_btw_fanky_cuy():
     clear()
