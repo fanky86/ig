@@ -175,10 +175,27 @@ def follow(cookie):
 def ini_menu_btw_fanky_cuy():
     clear()
     try:
-        cookie = open('data/ig-loginfan.txt', 'r').read()
-        userid = re.findall(r'sessionid=(\d+)', cookie)[0]
-    except:
-        Console().print(f" {H2}• {P2}Cookie anda kadaluwarsa silahkan Login Ulang")
+        # Coba membaca file cookie
+        with open('data/ig-loginfan.txt', 'r') as f:
+            cookie = f.read()
+        # Regex untuk mengambil sessionid (lebih fleksibel jika ada karakter selain angka)
+        sessionid_match = re.findall(r'sessionid=([\w%]+)', cookie)
+        # Cek apakah sessionid ditemukan
+        if sessionid_match:
+            userid = sessionid_match[0]
+            Console().print(f" {H2}• {P2}User ID ditemukan: {userid}")
+        else:
+            Console().print(f" {H2}• {P2}Session ID tidak ditemukan dalam cookie")
+            time.sleep(3)
+            fanlogincoki()
+    # Tangkap kesalahan FileNotFoundError jika file tidak ditemukan
+    except FileNotFoundError:
+        Console().print(f" {H2}• {P2}File cookie tidak ditemukan, silakan login ulang.")
+        time.sleep(3)
+        fanlogincoki()
+    # Tangkap kesalahan lain jika ada masalah saat mengolah cookie
+    except Exception as e:
+        Console().print(f" {H2}• {P2}Terjadi kesalahan: {str(e)}")
         time.sleep(3)
         fanlogincoki()
     try:
