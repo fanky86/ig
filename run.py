@@ -155,8 +155,67 @@ def ceklogin():
         Console().print(f" {H2}• {P2}Terjadi kesalahan: {str(e)}")
         time.sleep(3)
         fanlogincoki()
-	    
+
+
+import re
+import requests
+import os
+from rich.console import Console
+from rich.panel import Panel
+
 def fanlogincoki():
+    console = Console()
+    try:
+        # Membaca cookie dari file jika sudah tersimpan
+        cookie = open('data/ig-loginfan.txt', 'r').read()
+    except FileNotFoundError:
+        # Jika file tidak ditemukan, meminta pengguna memasukkan cookie secara manual
+        console.print(Panel("Masukan Cookie Akun Instagram", width=60, style="bold green"))
+        cookie = console.input(f' • Masukan Cookie : ')
+    try:
+        # Header untuk request agar menyerupai permintaan dari perangkat mobile
+        headers = {'user-agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 243.1.0.14.111 (iPhone13,3; iOS 15_5; en_US; en-US; scale=3.00; 1170x2532; 382468104) NW/3'}
+
+        # Mengambil user ID dari cookie menggunakan regular expression
+        match = re.search(r'ds_user_id=(\d+)', cookie)
+        if match:
+            uid = match.group(1)
+        else:
+            console.print("[bold red]User ID tidak ditemukan dalam cookie. Pastikan cookie benar.[/]")
+            exit()
+        # Meminta data pengguna dari API Instagram
+        response = requests.get(f'https://i.instagram.com/api/v1/users/{uid}/info/', headers=headers, cookies={'cookie': cookie}).json()
+        # Memastikan kunci 'user' ada dalam respons API
+        if 'user' in response:
+            req = response['user']
+        else:
+            console.print("[bold red]Gagal mengambil informasi pengguna. Respons API tidak sesuai.[/]")
+            exit()
+        # Memanggil fungsi follow (asumsi fungsi sudah didefinisikan)
+        follow(cookie)
+        # Menyimpan cookie yang valid ke dalam file
+        with open('data/ig-loginfan.txt', 'w') as f:
+            f.write(cookie)
+        # Menampilkan informasi pengguna
+        console.print(Panel(f"Selamat {req['full_name']}, cookie kamu valid", style="bold green", width=60))
+        console.print("[bold green]Login Berhasil, Jalankan Ulang Script\n")
+        # Keluar dari program setelah login berhasil
+        exit()
+    except requests.exceptions.RequestException as e:
+        # Menangani kesalahan dalam permintaan HTTP
+        console.print(f"[bold red]Kesalahan jaringan atau saat melakukan request: {e}[/]")
+        exit()
+    except KeyError as e:
+        # Menangani kesalahan kunci saat mengakses data JSON
+        console.print(f"[bold red]Kunci {e} tidak ditemukan dalam respons API. Periksa apakah respons sesuai.[/]")
+        exit()
+    except Exception as e:
+        # Menghapus file cookie jika ada kesalahan yang tidak diantisipasi
+        os.system("rm -rf data/ig-loginfan.txt")
+        console.print(f"[bold red]Terjadi kesalahan yang tidak terduga: {e}[/]")
+        exit()
+	    
+def fanlogincokiiiii():
     console = Console()
     try:
         cookie = open('data/ig-loginfan.txt', 'r').read()
