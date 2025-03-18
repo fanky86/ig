@@ -481,7 +481,7 @@ def Find_MediaId(link,cokie):
     return ahmasa
 
 def crack():
-	apsw(method)
+	apsw()
 	
 def ccrack():
     print('\n')
@@ -492,7 +492,7 @@ def ccrack():
     method = Console().input(f" {H2}• {P2}Masukan : ")
     apsw(method)
 
-def apsw(method):
+def apsw():
     global iniapabree, kaloinijugaapa
     console.print(f' {H2}• {P2}Tambah Password Sendiri? (y/t)')
     weskas = console.input(f' {H2}• {P2}Masukan : ').lower()
@@ -519,7 +519,7 @@ def apsw(method):
           for i in fanids:
              username, password = i.split('<<=>>')
              apacobabg = generate(password.lower())
-             pikha.submit(iniygdipake, username, apacobabg)
+             pikha.submit(iniygdipake, username,apacobabg)
     if success == 0 and checkpoint == 0:
        console.print(f' {H2}• {P2}Maaf Bree Kamu Gk Dapat Hasil')
        exit()
