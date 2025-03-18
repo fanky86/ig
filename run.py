@@ -494,7 +494,7 @@ def ccrack():
 
 def apsw():
     global iniapabree, kaloinijugaapa
-    console.print(f' {H2}• {P2}Tambah Password Sendiri? (y/t)')
+    console.print(f'\n {H2}• {P2}Tambah Password Sendiri? (y/t)')
     weskas = console.input(f' {H2}• {P2}Masukan : ').lower()
     if weskas in ['y','ya','Y']:
        console.print(f' {H2}• {P2}Gunakan koma buat pemisah')
