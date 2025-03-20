@@ -493,11 +493,11 @@ def crack():
 	user_input = Console().input(f" {H2}• {P2}Masukan : ")  # Jangan timpa 'method'
 
 	if user_input in ['01', '1']: 
-		method.append("api")
-	elif user_input in ['02', '2']: 
 		method.append("ini")
-	elif user_input in ['03', '3']: 
+	elif user_input in ['02', '2']: 
 		method.append("www")
+	elif user_input in ['03', '3']: 
+		method.append("api")
 	elif user_input in ['04', '4']: 
 		method.append("bi")
 	else:
