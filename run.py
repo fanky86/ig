@@ -702,7 +702,7 @@ def i_insta(username, password):
                  'Authority': 'i.instagram.com',
                  'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
                  'Connection': 'Close',
-                 'User-Agent': fanuaig(),
+                 'User-Agent': UserAgentBarcelona(),
                  'X-IG-Capabilities': 'Fw==',
                  'X-IG-App-ID': '936619743392459',
                  'Cookie': f'csrftoken={curl.cookies.get("csrftoken")};mid={curl.cookies.get("mid")};dpr=2;ig_nrcb=1'
@@ -877,7 +877,7 @@ def api_insta(username, password):
                  'Accept-Encoding': 'br, gzip, deflate',
                  'Accept-Language': 'id-ID',
                  'X-IG-ABR-Connection-Speed-KBPS': '0',
-                 'User-Agent': fanuaig(),
+                 'User-Agent': UserAgentBarcelona(),
                  'Connection': 'keep-alive',
                  'X-IG-Capabilities': '36r/dw==',
                  'Cookie': f'csrftoken={curl.cookies.get("csrftoken")};mid={curl.cookies.get("mid")};dpr=2'
@@ -944,7 +944,7 @@ def www_insta(username, password):
                  'X-IG-App-ID': '936619743392459',
                  'Accept-Language': 'id-ID',
                  'X-IG-ABR-Connection-Speed-KBPS': '0',
-                 'User-Agent': fanuaig(),
+                 'User-Agent': UserAgentBarcelona(),
                  'Connection': 'keep-alive',
                  'X-IG-Capabilities': '36r/dw==',
                  'Cookie': f'csrftoken={curl.cookies.get("csrftoken")};mid={curl.cookies.get("mid")};dpr=2'
@@ -1027,7 +1027,7 @@ def threads(username, password):
                  'X-IG-App-ID': '936619743392459',
                  'Accept-Language': 'id-ID',
                  'X-IG-ABR-Connection-Speed-KBPS': '0',
-                 'User-Agent': UserAgent(),
+                 'User-Agent': UserAgentBarcelona(),
                  'Connection': 'keep-alive',
                  'X-IG-Capabilities': '36r/dw==',
                  'Cookie': f'csrftoken={curl.cookies.get("csrftoken")};mid={curl.cookies.get("mid")};dpr=2'
