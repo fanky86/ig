@@ -500,10 +500,10 @@ def crack():
 		method.append("bi")
 	else:
 		method.append("api")
-	apsw()
+	apsw(method)
 
 	
-def apsw():
+def apsw(method):
 	global iniapabree, kaloinijugaapa
 	console.print(f'\n {H2}• {P2}Tambah Password Sendiri? (y/t)')
 	weskas = console.input(f' {H2}• {P2}Masukan : ').lower()
