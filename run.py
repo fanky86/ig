@@ -291,10 +291,10 @@ def ini_menu_btw_fanky_cuy():
 {color_text}2{P2}. Cek hasil akun CP""",width=60, title="CEK HASIL CRACK", style=f"{color_panel}"))
        hash = console.input(f'{H2} • {P2}Masukan : ')
        if hash in   ['1','01']:
-          try:os.system('ul OK/OK.txt')
+          try:os.system('ul OK.txt')
           except:console.print(f' {H2}• {M2}Terjadi kesalahan');exit()
        elif hash in ['2','02']:
-          try:os.system('ul CP/CP.txt')
+          try:os.system('ul CP.txt')
           except:console.print(f' {H2}• {M2}Terjadi kesalahan');exit()
        else:ini_menu_btw_fanky_cuy()
     elif main in ['0','00']:
