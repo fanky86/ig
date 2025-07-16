@@ -632,9 +632,11 @@ def threads(username, password):
 
 
 if __name__ == '__main__':
-    try:os.mkdir('data')
-    except:pass
-    ini_menu_btw_fanky_cuy()
+	try:os.mkdir('data')
+	except:pass
+	try:os.system("touch data/ig-loginfan.txt")
+	except:pass
+	ini_menu_btw_fanky_cuy()
 
 
 
