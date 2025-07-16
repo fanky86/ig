@@ -441,6 +441,7 @@ def crack():
 
 def apsw():
     global iniapabree, kaloinijugaapa
+    print()
     console.print(f' {H2}• {P2}Tambah Password Sendiri? (y/t)')
     weskas = console.input(f' {H2}• {P2}Masukan : ').lower()
     if weskas in ['y','ya','Y']:
