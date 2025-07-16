@@ -164,7 +164,7 @@ def fankylicen():
 		if os.path.exists(".license"):
 			key = open(".license", "r").read().strip()
 			try:
-				check = requests.get("https://pastebin.com/raw/eKMyyVzJ").text
+				check = requests.get("https://pastebin.com/raw/Xzn0MkRd").text
 			except:
 				Console().print(Panel(f"{M2} • Gagal menghubungi server lisensi, cek koneksi Anda", width=60, style=f"{color_panel}"))
 				time.sleep(2)
