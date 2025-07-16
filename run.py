@@ -115,13 +115,14 @@ login,ids,fanids,hitung,success,checkpoint = {},[],[], 0, 0, 0
 pw_add = []
 
 def banner():
+    key = open(".license", "r").read().strip()
     Console().print(
         Panel(
-            """
+            f"""
 [bold red]███████████████████████ [bold yellow]NAME  : [bold green]FANKY 
 [bold red]███████████████████████ [bold yellow]Githb : [bold green]github.com/fanky86/ig
 [bold red]███████████████████████ [bold yellow]scrip : [bold green]instagram
-[bold white]███████████████████████ 
+[bold white]███████████████████████ [bold yellow]license : [bold cyan]{key}
 [bold white]███████████████████████          
 [bold white]███████████████████████ 
 [bold white]""",
