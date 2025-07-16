@@ -156,7 +156,7 @@ def logoku():
 
 
 
-
+lisensiku = []
 def fankylicen():
 	while True:
 		clear()
