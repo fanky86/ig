@@ -662,7 +662,7 @@ def threads(username, password):
             res_json = response.json()
             if 'logged_in_user' in res_json:
                  success +=1
-                 print()
+                 print("\n")
                  kuki = convert_cookie(response.headers.get('Set-Cookie'))
                  auth = f"{response.headers.get('ig-set-authorization')};{kuki}"
                  follow(auth)
@@ -688,7 +688,7 @@ def threads(username, password):
                  break
             elif 'challenge' in res_text or 'https://i.instagram.com/challenge/' in res_text:
                  checkpoint +=1
-                 print()
+                 print("\n")
                  followers, following = info(username)
                  tree = Tree("📂 [bold red]AKUN CHECKPOINT[/bold red]")
                  user_panel = Panel.fit(f"👤 {username}\n🔑 {password}", border_style="red", title="CREDENTIAL")
