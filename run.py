@@ -130,6 +130,77 @@ def banner():
         )
     )
     
+def jalan(keliling):
+    for mau in keliling + "\n":
+        sys.stdout.write(mau)
+        sys.stdout.flush()
+        time.sleep(0.03)
+
+
+
+def logoku():
+    console = Console()
+    logo_text = Text(
+        """
+██╗     ██╗ ██████╗███████╗███╗   ██╗███████╗███████╗
+██║     ██║██╔════╝██╔════╝████╗  ██║██╔════╝██╔════╝
+██║     ██║██║     █████╗  ██╔██╗ ██║███████╗█████╗  
+██║     ██║██║     ██╔══╝  ██║╚██╗██║╚════██║██╔══╝  
+███████╗██║╚██████╗███████╗██║ ╚████║███████║███████╗
+╚══════╝╚═╝ ╚═════╝╚══════╝╚═╝  ╚═══╝╚══════╝╚══════╝
+""",style="bold cyan")
+
+    # Panel utama dengan width 60
+    panel = Panel(logo_text,title="[bold magenta]Selamat Datang[/bold magenta]",subtitle="[bold yellow]Gunakan Setelah Registrasi Tools Anda[/bold yellow]",border_style="green",width=60)
+    console.print(panel)
+
+
+
+
+def fankylicen():
+	while True:
+		clear()
+		logoku()
+		if os.path.exists(".license"):
+			key = open(".license", "r").read().strip()
+			try:
+				check = requests.get("https://pastebin.com/raw/eKMyyVzJ").text
+			except:
+				Console().print(Panel(f"{M2} • Gagal menghubungi server lisensi, cek koneksi Anda", width=60, style=f"{color_panel}"))
+				time.sleep(2)
+				continue
+
+			if key in check:
+				lisensiku.append("sukses")
+				Console().print(Panel(f"{H2} • {P2}Key Anda Sudah {H2}Aktif ✓{P2}{hapus}", width=60, style=f"{color_panel}"))
+				time.sleep(1.5)
+				ini_menu_btw_fanky_cuy()
+			else:
+				Console().print(Panel(f"""
+{H2} • {P2}YOUR KEY : {H2}{key}
+{H2} • {P2}Key anda {M2}belum{P2} di konfirmasi
+{H2} • {P2}Harga Lisensi:
+{H2}   ├─ {P2}3 Hari  = {H2}10k
+{H2}   ├─ {P2}5 Hari  = {H2}15k
+{H2}   ├─ {P2}7 Hari  = {H2}20k
+{H2}   └─ {P2}1 Bulan = {H2}30k
+{H2} • {P2}Silahkan beli ke: {H2}+62895359611122
+{H2} • {P2}Gunakan SC setelah aktivasi key
+""", width=60, style=f"{color_panel}"))
+
+				buy_key = console.input(f"{H2} • {P2}Tekan {H2}ENTER{P2} untuk chat WhatsApp author & beli key.")
+				if buy_key == "":
+					jalan(f'   Anda akan diarahkan ke WhatsApp author...'); time.sleep(2)
+					os.system(f'xdg-open "https://wa.me/62895359611122?text=Bang+beli+key+SC+instagram+{key}+durasi+___+hari"')
+		else:
+			key_gen = random.randint(1000, 9999)
+			enc_key = base64.b16encode(str(key_gen).encode()).decode("utf-8")
+			final_key = f"FAN-{enc_key}"
+			with open(".license", "w") as tulis:
+				tulis.write(final_key)
+			continue
+		break
+
 
 def fanlogincoki():
     console = Console()
@@ -294,8 +365,6 @@ def searchnama(cookie):
         pass
 
     return fanids
-
-   
 
 				
 def GetFollowers(user_id, max_id, cookie):
@@ -640,6 +709,5 @@ def threads(username, password):
 if __name__ == '__main__':
 	try:os.mkdir('data')
 	except:pass
-	ini_menu_btw_fanky_cuy()
-
+	fankylicen()
 
