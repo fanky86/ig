@@ -172,7 +172,7 @@ def fankylicen():
 
 			if key in check:
 				lisensiku.append("sukses")
-				Console().print(Panel(f"{H2} • {P2}Key Anda Sudah {H2}Aktif ✓{P2}{hapus}", width=60, style=f"{color_panel}"))
+				Console().print(Panel(f"{H2} • {P2}Key Anda Sudah {H2}Aktif ✓", width=60, style=f"{color_panel}"))
 				time.sleep(1.5)
 				ini_menu_btw_fanky_cuy()
 			else:
