@@ -6,6 +6,7 @@ download aplikasi termux di playstore atau <a href="https://f-droid.org/en/packa
     $ pkg update && pkg upgrade
     $ pkg install python git
     $ pip install requests
+    $ pip install httpx
     $ rm -rf ig
     $ git clone https://github.com/fanky86/ig
     $ cd ig
